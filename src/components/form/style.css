@@ -1,21 +1,28 @@
 .list-group-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.5s;
-  }
-  p{
-    margin-bottom: 0;
-  }
-  
-  .list-group-item:hover {
-    background-color: #cccccc80;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s;
+}
+p {
+  margin-bottom: 0;
+}
 
-  #add_btn{
-    margin-left: auto;
-  }
-  .todo_left{
-    gap: 30px;
-  }
+.list-group-item:hover {
+  background-color: #cccccc80;
+}
+.list-group-item.completed p {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.list-group-item.completed {
+  background-color: #e0e0e0;
+}
+
+#add_btn {
+  margin-left: auto;
+}
+.todo_left {
+  gap: 30px;
+}

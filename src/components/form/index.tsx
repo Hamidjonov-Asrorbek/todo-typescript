@@ -8,6 +8,7 @@ type Todo = {
   id: number;
   text: string;
   time: string;
+  completed: boolean;
 };
 
 type ModalState = {
@@ -39,6 +40,7 @@ const Form: React.FC = () => {
       id: date.getTime(),
       text,
       time: getTime(),
+      completed: false,
     };
     setTodos((prev) => [...prev, newTodo]);
     setText("");
@@ -46,6 +48,14 @@ const Form: React.FC = () => {
 
   const deleteTodo = (todoId: number): void => {
     setTodos((prev) => prev.filter((todo) => todo.id !== todoId));
+  };
+
+  const toggleCompleted = (todoId: number): void => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   const getTime = (): string => {
@@ -86,9 +96,17 @@ const Form: React.FC = () => {
         className="list-group d-flex justify-content-between"
       >
         {todos.length
-          ? todos.map(({ id, text, time }) => {
+          ? todos.map(({ id, text, time, completed }) => {
               return (
-                <li className="list-group-item" key={id}>
+                <li
+                  className={`list-group-item ${completed ? "completed" : ""}`}
+                  key={id}
+                >
+                  <input
+                    type="checkbox"
+                    checked={completed}
+                    onChange={() => toggleCompleted(id)}
+                  />
                   <p>{text}</p>
                   <div className="align-items-center gap-5">
                     <span className="opacity-50 me-2">{time}</span>

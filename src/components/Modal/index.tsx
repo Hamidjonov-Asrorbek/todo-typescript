@@ -19,6 +19,7 @@ type Todo = {
   id: number;
   text: string;
   time: string;
+  completed: boolean;
 };
 
 const Modal: React.FC<ModalProps> = ({
