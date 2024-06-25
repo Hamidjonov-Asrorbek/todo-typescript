@@ -1,0 +1,21 @@
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s;
+  }
+  p{
+    margin-bottom: 0;
+  }
+  
+  .list-group-item:hover {
+    background-color: #cccccc80;
+  }
+  
+
+  #add_btn{
+    margin-left: auto;
+  }
+  .todo_left{
+    gap: 30px;
+  }
