@@ -4,7 +4,11 @@ import "./style.css";
 
 type ModalProps = {
   closeModal: React.Dispatch<
-    React.SetStateAction<{ show: boolean; todoId: number | null }>
+    React.SetStateAction<{
+      show: boolean;
+      todoId: number;
+      todoText: string;
+    }>
   >;
   itemId: number;
   itemText: string;
@@ -39,7 +43,7 @@ const Modal: React.FC<ModalProps> = ({
     setText("");
 
     closeModal((prev) => {
-      return { ...prev, show: false, todoId: null };
+      return { ...prev, show: false, todoId: 0, todoText: "" };
     });
   };
 
@@ -53,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({
               id="close"
               onClick={() =>
                 closeModal((prev) => {
-                  return { ...prev, show: false, todoId: null };
+                  return { ...prev, show: false, todoId: 0, todoText: "" };
                 })
               }
               src={close}
